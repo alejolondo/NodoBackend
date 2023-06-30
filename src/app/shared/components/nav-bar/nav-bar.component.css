@@ -1,0 +1,9 @@
+.nav-link {
+  cursor: pointer;
+  /* Opcional: puedes agregar otros estilos para los enlaces */
+}
+
+img{
+  width: 110px;
+  height: auto;
+}
