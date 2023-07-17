@@ -1,4 +1,7 @@
 <div class="container">
 
-  <h1> Observatorio de tendencias y riesgos </h1>
+  <button (click)="autocompletarURL()">Autocompletar URL</button>
+<form>
+  <input type="text" [(ngModel)]="url" name="url" placeholder="URL">
+</form>
 </div>

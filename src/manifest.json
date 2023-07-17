@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Observatorio Sura",
+  "version": "1.0.0",
+  "description": "Obbservatorio de señales hecho por Nodo EAFIT",
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "activeTab"
+  ]
+}
