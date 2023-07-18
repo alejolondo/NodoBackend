@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SeñalesRoutingModule } from './señales-routing.module';
 import { NuevaSeñalComponent } from './pages/nueva-señal/nueva-señal.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { TodasComponent } from './pages/todas/todas.component';
 
 
 
@@ -11,11 +13,14 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule,
     SeñalesRoutingModule,
-    
+    HttpClientModule
+
   ],
   declarations: [
-    NuevaSeñalComponent
+    NuevaSeñalComponent,
+    TodasComponent
   ],
-  exports: [NuevaSeñalComponent]
+  exports: [NuevaSeñalComponent,
+  TodasComponent]
 })
 export class SeñalesModule { }

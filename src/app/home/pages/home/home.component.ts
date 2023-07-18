@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeServiceService } from '../../service/homeService.service';
 
 
 @Component({
@@ -8,16 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent  {
 
- url?: string = " ";
+ query: string = " ";
+
+ constructor(private service : HomeServiceService){}
 
   autocompletarURL() {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs: chrome.tabs.Tab[]) => {
-      if (tabs && tabs.length > 0) {
-        const currentURL = tabs[0].url;
-        this.url = currentURL;
-        console.log(currentURL);
-      }
-    });
+    this.service.saveSignal(this.query).subscribe(signal => {
+      console.log("señal guardada con exito");
+    })
+
+    
   }
 
 

@@ -1,7 +1,7 @@
 <div class="container">
 
-  <button (click)="autocompletarURL()">Autocompletar URL</button>
-<form>
-  <input type="text" [(ngModel)]="url" name="url" placeholder="URL">
-</form>
+  <form>
+      <input class="form-input" type="text" [(ngModel)]="query" name="url" placeholder="URL">
+  </form>
+  <button class="btn btn-primary mt-1" (click)="autocompletarURL()">Autocompletar URL</button>
 </div>

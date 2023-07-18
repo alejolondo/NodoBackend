@@ -1,13 +1,13 @@
 
-<div class="container">
-  <h1>Señales </h1>
+<h1>Señales </h1>
+<div class="container d-flex ms-5">
   <h1></h1>
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+  <div *ngFor="let signal of signals" class="card" style="width: 18rem;">
+    <img src= "{{signal.urlToImage}}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">{{signal.title}}</h5>
+      <p class="card-text">{{signal.description}} </p>
+      <a href="#" class="btn btn-primary">Url: {{signal.url}}</a>
     </div>
   </div>
 </div>
