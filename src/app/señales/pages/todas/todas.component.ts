@@ -20,6 +20,13 @@ public signals: Signal[] = [];
   })
   }
 
+  delete(id : string){
+    return this.signalService.deleteSignal(id).subscribe(signal => {
+      console.log("La señal fue eliminada")
+    })
+  }
+
+
 
 
 }

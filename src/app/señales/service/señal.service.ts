@@ -19,4 +19,7 @@ return this.httpCliente.get<Signal[]>(`${this.apiUrl}`).pipe(
 );
 }
 
+deleteSignal(id : string){
+  return this.httpCliente.delete(`${this.apiUrl}/${id}`, {});
+}
 }

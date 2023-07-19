@@ -2,13 +2,14 @@
 <h1>Señales </h1>
 <div class="container d-flex ms-5">
   <h1></h1>
-  <input type="select" >
   <div *ngFor="let signal of signals" class="card" style="width: 18rem;">
+
     <img src= "{{signal.urlToImage}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{signal.title}}</h5>
       <p class="card-text">{{signal.description}} </p>
       <a href="#" class="btn btn-primary">Url: {{signal.url}}</a>
+      <button  class="btn btn-danger" (click)="delete(signal.id)" > Eliminar</button>
     </div>
   </div>
 </div>
