@@ -8,7 +8,8 @@ import { Observable,catchError, map, of } from 'rxjs';
 })
 export class HomeServiceService {
 
-  private apiUrl: string = 'http://localhost:8080/api/signals'
+private apiUrl: string = 'http://localhost:8080/api/signals'
+
 constructor( private httpCliente : HttpClient ) { }
 
 searchSignal() : Observable<Signal[]>{
@@ -17,8 +18,8 @@ return this.httpCliente.get<Signal[]>('this.apiUrl').pipe(
 );
 }
 
-saveSignal(query : string){
-  return this.httpCliente.post(`${this.apiUrl}/${query}`, {});
+saveSignal(query : string, tag: string){
+  return this.httpCliente.post(`${this.apiUrl}/${query}/${tag}`, {});
 }
 
 

@@ -1,18 +1,24 @@
-
-<h1>Señales </h1>
-<div class="container d-flex ms-5">
-  <h1></h1>
-  <div *ngFor="let signal of signals" class="card" style="width: 18rem;">
-
-    <img src= "{{signal.urlToImage}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{signal.title}}</h5>
-      <p class="card-text">{{signal.description}} </p>
-      <a href="#" class="btn btn-primary">Url: {{signal.url}}</a>
-      <button  class="btn btn-danger" (click)="delete(signal.id)" > Eliminar</button>
+<h2 class="text-center">Señales guardadas</h2>
+<button (click)="refrescarSenales()" class="btn btn-outline-success"><i class="bi bi-arrow-clockwise"></i>Refrescar</button>
+<div class="cards row row-cols-1 row-cols-md-4 g-4">
+  <div class="col d-flex justify-content-evenly" *ngFor="let signal of signals">
+    <div class="card h-100" style="width: 18rem;" >
+      <div class="card-header text-center">
+          {{ signal.tag }}
+      </div>
+      <img src= "{{signal.urlToImage}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{signal.title}}</h5>
+        <p class="card_preview-text">{{signal.description}} </p>
+      </div>
+      <div class="card-footer d-flex justify-content-end">
+        <a routerLink="[signail.url]" class="btn btn-primary">Ver más</a>
+        <button (click)="delete(signal.id)" class="btn btn-danger" > Eliminar</button>
+      </div>
     </div>
-  </div>
 </div>
+
+
 
 
 

@@ -7,3 +7,20 @@ img{
   width: 110px;
   height: auto;
 }
+
+.navbar {
+  background-color: #0033a0;
+}
+
+a{
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+img {
+  width: 100px;
+  height: 90px;
+  margin-left: 30px;
+}
