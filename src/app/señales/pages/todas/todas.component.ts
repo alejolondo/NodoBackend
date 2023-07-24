@@ -13,13 +13,14 @@ import { Router } from '@angular/router';
 })
 export class TodasComponent implements OnInit  {
 public signals: Signal[] = [];
+public dataLoad: boolean = false;
 
   constructor(private signalService: SeñalService, private router: Router) { }
 
   ngOnInit(): void {
-  this.signalService.searchSignal().subscribe(signal => {
-    this.signals = signal;
-  })
+  this.refreshList()
+  this.dataLoad = true
+
   }
 
   delete(id : string){
@@ -35,15 +36,19 @@ public signals: Signal[] = [];
       confirmButtonClass: 'btn btn-success',
       cancelButtonClass: 'btn btn-danger',
       buttonsStyling: true
-    }).then((result) => {
+    }).then((result: any) => {
       if(result.value){
         this.signalService.deleteSignal(id).subscribe(dato => {
+
           console.log(dato);
           swal(
             'Señal eliminada',
             'La señal ha sido eliminada con exito',
             'success'
           )
+          this.signalService.searchSignal().subscribe(signal => {
+            this.signals = signal;
+          })
         })
       }
     })
@@ -51,6 +56,12 @@ public signals: Signal[] = [];
 
   refrescarSenales(): void {
     window.location.reload();
+  }
+
+  refreshList(){
+    this.signalService.searchSignal().subscribe(signal => {
+      this.signals = signal;
+    })
   }
 
 }

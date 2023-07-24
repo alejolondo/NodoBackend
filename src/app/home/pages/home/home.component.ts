@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeServiceService } from '../../service/homeService.service';
 import { Router } from '@angular/router';
+import { Category, Tag } from 'app/señales/Interface/category';
+import { Signal } from 'app/home/Interface/signals';
 
 
 @Component({
@@ -8,21 +10,47 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: []
 })
-export class HomeComponent  {
+export class HomeComponent implements OnInit {
 
- query: string = " ";
- tag: string = " ";
+ query: string = "";
+ category: string = "";
+ categories: Category[] = []
+ categorySelected: Category | null = null;
+ tagSelected: Category | null = null;
+ tags: Tag[] = []
+
+ signals: Signal[] = [];
+
 
  constructor(private service : HomeServiceService, private router:Router){}
 
-  guardarSenal() {
-    this.service.saveSignal(this.query, this.tag).subscribe(signal => {
-      console.log("señal guardada con exito");
+  ngOnInit(): void {
+this.service.getCategories().subscribe(category => {
+  this.categories = category
+});
+
+this.service.searchSignal().subscribe(signals => {
+  this.signals = signals;
+});
+
+}
+
+
+
+  getCategoryById(id: number){
+    this.service.getCategoriesById(id).subscribe(category => {
+      this.tags = category
     })
-    this.listaDeSenales();
+
+  }
+  guardarSenal() {
+    this.service.saveSignal(this.query, this.category).subscribe(signal => {
+      console.log("señal guardada con exito");
+      this.signals.push(signal)
+      this.router.navigate(['/señales']);
+    })
+
   }
 
-  listaDeSenales() {
-    this.router.navigate(['/señales']);
-  }
+
 }
