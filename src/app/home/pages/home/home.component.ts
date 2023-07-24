@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeServiceService } from '../../service/homeService.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,17 +11,18 @@ import { HomeServiceService } from '../../service/homeService.service';
 export class HomeComponent  {
 
  query: string = " ";
+ tag: string = " ";
 
- constructor(private service : HomeServiceService){}
+ constructor(private service : HomeServiceService, private router:Router){}
 
-  autocompletarURL() {
-    this.service.saveSignal(this.query).subscribe(signal => {
+  guardarSenal() {
+    this.service.saveSignal(this.query, this.tag).subscribe(signal => {
       console.log("señal guardada con exito");
     })
-
-    
+    this.listaDeSenales();
   }
 
-
-
+  listaDeSenales() {
+    this.router.navigate(['/señales']);
+  }
 }
